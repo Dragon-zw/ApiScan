@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  api-pentest-platform:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: api-pentest-platform
+    ports:
+      - "18080:80"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    networks:
+      - pentest-network
+
+networks:
+  pentest-network:
+    driver: bridge
